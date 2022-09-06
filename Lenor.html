@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Playing Card</title>
+  <style>
+    body{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    img {
+      width: 100px;
+    }
+    .button{
+      border-radius: 20px;
+      outline: none;
+      margin: 10px auto;
+      font-size: 40px;
+    }
+  </style>  
+</head>
+<body>
+  <div id="card">
+    <img src="imagesblue_back.png">
+  </div>
+  <button class="font button" onclick="selectCard();">發牌</button>  
+  <script>
+    function selectCard(){
+      var playerOne = [];
+      var allCards = ["",
+          "AC", "2C", "3C", "4C", "5C", "6C", "7C", "8C", "9C", "10C", "JC", "QC", "KC",
+          "AD", "2D", "3D", "4D", "5D", "6D", "7D", "8D", "9D", "10D", "JD", "QD", "KD",
+          "AH", "2H", "3H", "4H", "5H", "6H", "7H", "8H", "9H", "10H", "JH", "QH", "KH",
+          "AS", "2S", "3S", "4S", "5S", "6S", "7S", "8S", "9S", "10S", "JS", "QS", "KS"
+      ];
+      var cardImages="";
+      for (var i = 1; i <= 13; i++){
+        var selectedCard = getRandom(1,54-i); //當i=1時，隨機數介於1~52間，i=2時，隨機數介於1~51間
+        var card = allCards [selectedCard];
+        allCards.splice(selectedCard, 1);
+        playerOne.push(card);
+        cardImages += `<img src='images/${card}.png' alt='Playing Card'>`;
+        console.log(allCards);
+        console.log(playOne);
+      }
+      var card_div = document.getElementById("card");
+      card_div.innerHTML =  cardImages;
+    }
+    function getRandom(min, max) { //  min <= x < max, x是整數亂數
+      return Math.floor(Math.random() * (max - min) ) + min;
+    }
+  </script>  
+</body>
+</html>
