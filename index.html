@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Playing Card</title>
+  <title>Lenormand Card</title>
   <style>
     body{
       display: flex;
@@ -27,7 +27,8 @@
 <body>
   <div id="card">
   </div>
-  <button class="font button" onclick="selectCard();">抽卡</button>  
+  <button class="font button" onclick="selectCard();">抽雷諾曼</button>
+  <button class="font button" onclick="/tarot.html">前往塔羅牌</button>
   <script>
     function selectCard(){
       var playerOne = [];
@@ -42,7 +43,7 @@
         var card = allCards [selectedCard];
         allCards.splice(selectedCard, 1);
         playerOne.push(card);
-        cardImages += `<img src='images/${card}.jpeg' alt='Playing Card'>`;
+        cardImages += `<img src='images/${card}.jpeg' alt='Lenormand Card'>`;
         console.log(allCards);
         console.log(playerOne);
         if(i/3==0)
