@@ -17,7 +17,7 @@
         div {
             margin: 0 auto;
             text-align: center;
-            width: 60%;
+            width: 50%;
         }
 
         img {
@@ -34,43 +34,42 @@
     </style>
 </head>
 <body>
-    <div id="card">
+    <div id="fate">
     </div>
-    <button class="font button" onclick="selectLenormand();">九張雷諾曼</button>
-    <button class="font button" onclick="selectTarot(1);">一張塔羅</button>
-    <button class="font button" onclick="selectTarot(3);">三張塔羅</button>
-    <button class="font button" onclick="selectTarot(4);">四張塔羅</button>
-    <button class="font button" onclick="selectTarot(5);">五張塔羅</button>
+    <button class="font button" style="background-color: #FFF7E8;" onclick="getLenormand(9);">九張雷諾曼</button>
+    <button class="font button" style="background-color: #FFF7E8;" onclick="getLenormand(3);">三張雷諾曼</button>
+    <br />
+    <button class="font button" style="background-color: #FFE8E8;" onclick="getTarot(1);">一張塔羅</button>
+    <button class="font button" style="background-color: #FFE8E8;" onclick="getTarot(3);">三張塔羅</button>
+    <button class="font button" style="background-color: #FFE8E8;" onclick="getTarot(4);">四張塔羅</button>
+    <button class="font button" style="background-color: #FFE8E8;" onclick="getTarot(5);">五張塔羅</button>
 
-    <br>
-    <br>
+    <br />
+    <br />
 
     <a href="https://www.instagram.com/laney_freesia" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">Instagram：問心尋解｜雷諾曼占卜（@laney_freesia）</a>
 
     <script>
-        function selectLenormand() {
-            var playerOne = [];
+        function getLenormand(num) {
+            var chosenCards = [];
             var allCards = ["",
                 "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12",
                 "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
                 "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36",
             ];
-            var cardImages = "";
-            for (var i = 1; i <= 9; i++) {
-                var selectedCard = getRandom(1, 37 - i); //當i=1時，隨機數介於1~52間，i=2時，隨機數介於1~51間
-                var card = allCards[selectedCard];
-                allCards.splice(selectedCard, 1);
-                playerOne.push(card);
-                cardImages += `<img src='images/${card}.jpeg' alt='Lenormand Card'>`;
-                console.log(allCards);
-                console.log(playerOne);
-
+            var chosenPics = "";
+            for (var i = 1; i <= num; i++) {
+                var cardNum = getRandom(1, 37 - i); //
+                var card = allCards[cardNum];
+                allCards.splice(cardNum, 1);
+                chosenCards.push(card);
+                chosenPics += `<img src='images/${card}.jpeg'>`;
             }
-            var card_div = document.getElementById("card");
-            card_div.innerHTML = cardImages;
+            var fate_div = document.getElementById("fate");
+            fate_div.innerHTML = chosenPics;
         }
-        function selectTarot(num) {
-            var playerOne = [];
+        function getTarot(num) {
+            var chosenCards = [];
             var allCards = ["",
                 "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12",
                 "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
@@ -80,22 +79,20 @@
                 "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72",
                 "73", "74", "75", "76", "77", "78"
             ];
-            var cardImages = "";
+            var chosenPics = "";
             for (var i = 1; i <= num; i++) {
-                var selectedCard = getRandom(1, 77 - i); //當i=1時，隨機數介於1~78間，i=2時，隨機數介於1~77間
-                var card = allCards[selectedCard];
-                allCards.splice(selectedCard, 1);
-                playerOne.push(card);
+                var cardNum = getRandom(1, 77 - i);
+                var card = allCards[cardNum];
+                allCards.splice(cardNum, 1);
+                chosenCards.push(card);
 
                 var r = Math.round(Math.random());
-                cardImages += `<img src='tarotimages/${card}.jpg' style='transform:rotate(${r * 180}deg)' alt='Tarot Card'>`;
-                console.log(allCards);
-                console.log(playerOne);
+                chosenPics += `<img src='tarotimages/${card}.jpg' style='transform:rotate(${r * 180}deg)'>`;
             }
-            var card_div = document.getElementById("card");
-            card_div.innerHTML = cardImages;
+            var fate_div = document.getElementById("fate");
+            fate_div.innerHTML = chosenPics;
         }
-        function getRandom(min, max) { //  min <= x < max, x是整數亂數
+        function getRandom(min, max) {
             return Math.floor(Math.random() * (max - min)) + min;
         }
     </script>
