@@ -110,11 +110,18 @@
                 var card = allCards[cardNum];
                 allCards.splice(cardNum, 1);
                 chosenCards.push(card);
-                chosenPics += `<img src='yenguimages/${card}.png'>`;
+                chosenPics += `<img src='yenguimages/0.png' onclick='openLenormand(${card})' id='${card}'>`;
             }
             var fate_div = document.getElementById("fate");
             fate_div.innerHTML = chosenPics;
         }
+
+        function openLenormand(card) {
+            image = document.getElementById(card);
+            console.log(card);
+            image.src = 'yenguimages/' + card +'.png';
+        }
+
         function getTarot(num) {
             var chosenCards = [];
             var allCards = ["",
@@ -134,11 +141,20 @@
                 chosenCards.push(card);
 
                 var r = Math.round(Math.random());
-                chosenPics += `<img src='tarotimages/${card}.jpg' style='transform:rotate(${r * 180}deg)'>`;
+                chosenPics += `<img src='tarotimages/0.jpg' style='transform:rotate(${r * 180}deg)' onclick='openTarot(${card})' id='${card}'>`;
             }
             var fate_div = document.getElementById("fate");
             fate_div.innerHTML = chosenPics;
         }
+        
+        
+        function openTarot(card) {
+            image = document.getElementById(card);
+            console.log(card);
+            image.src = 'tarotimages/' + card +'.jpg';
+        }
+
+        
         function getRandom(min, max) {
             return Math.floor(Math.random() * (max - min)) + min;
         }
