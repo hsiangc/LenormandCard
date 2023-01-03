@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -29,7 +30,6 @@
                 width: 99%;
             }
         }
-
         @media screen and (min-width: 768px) and (max-width: 912px) {
             #fate {
                 text-align: center;
@@ -37,16 +37,30 @@
             }
         }*/
 
-            #fate {
-                margin-top: 10vh;
-                margin-bottom: 10vh;
-                min-height: 50vh;
-                height: 80%;
-            }
+        /*#empress {
+            margin-top: 5vh;
+            margin-bottom: 5vh;
+            min-height: 30vh;
+            height: 100%;
+        }
+
+        #light {
+            margin-top: 5vh;
+            margin-bottom: 5vh;
+            min-height: 30vh;
+            height: 100%;
+        }
+
+        #fate {
+            margin-top: 5vh;
+            margin-bottom: 5vh;
+            min-height: 30vh;
+            height: 100%;
+        }*/
 
         img {
             margin: 0 auto;
-            height: 30%;
+            height: 60%;
         }
 
         .button {
@@ -62,16 +76,21 @@
             width: 50%;
             background-color: #FFF7E8;
         }
-
     </style>
 </head>
 <body>
     <div class="box">
+        <div id="empress">
+            <img id="nuwa" src="moonimages/0.jpg" >
+        </div>
+        <div id="light">
+            <img id ="candle" src="moonimages/3.png" >
+        </div>
         <div id="fate">
         </div>
         <div class="footer">
             <div class="button">
-                <button class="font button" onclick="pray();">點燈(還不能用)</button>
+                <button class="font button" onclick="pray();">點燈</button>
                 <button class="font button" onclick="ask();">擲筊</button>
             </div>
             <a href="https://www.instagram.com/laney_freesia" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">Instagram：問心尋解｜雷諾曼占卜（@laney_freesia）</a>
@@ -81,22 +100,8 @@
 
     <script>
         function pray() {
-            var chosenCards = [];
-            var allCards = ["",
-                "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12",
-                "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
-                "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36",
-            ];
-            var chosenPics = "";
-            for (var i = 1; i <= num; i++) {
-                var cardNum = getRandom(1, 37 - i); //
-                var card = allCards[cardNum];
-                allCards.splice(cardNum, 1);
-                chosenCards.push(card);
-                chosenPics += `<img src='images/0.jpeg' onclick='openLenormand(${card})' id='${card}'>`;
-            }
-            var fate_div = document.getElementById("fate");
-            fate_div.innerHTML = chosenPics;
+            var img = document.getElementById("candle");
+            img.src = 'moonimages/4.png';
         }
 
         function openLenormand(card) {
